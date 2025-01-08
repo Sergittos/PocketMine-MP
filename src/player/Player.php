@@ -524,17 +524,17 @@ class Player extends Human implements CommandSender, ChunkListener, IPlayer{
 	}
 
 	/**
-	 * Sets the player's speed when flying.
+	 * Sets the player's flight speed multiplier.
 	 *
-	 * The flight speed is calculated as `blocks per tick = flightSpeedMultiplier * 10`. For example, setting the
-	 * flight speed multiplier to 0.05 means the player will fly at approximately 0.5 blocks per tick.
+	 * Normal flying speed in blocks-per-tick is (multiplier * 10) blocks per tick.
+	 * When sprint-flying, this is doubled to 20.
 	 *
-	 * If set to zero, the player will not be able to move in the xz plane when flying, and negative values
-	 * will invert the controls.
+	 * If set to zero, the player will not be able to move in the xz plane when flying.
+	 * Negative values will invert the controls.
 	 *
-	 * Notes:
-	 * - The value of the movement speed attribute has no effect on the flight speed.
-	 * - When a player sprints while flying, their flight speed is doubled on the client-side.
+	 * Note: Movement speed attribute does not influence flight speed.
+	 *
+	 * @see Player::DEFAULT_FLIGHT_SPEED_MULTIPLIER
 	 */
 	public function setFlightSpeedMultiplier(float $flightSpeedMultiplier) : void{
 		if($this->flightSpeedMultiplier !== $flightSpeedMultiplier){
@@ -544,13 +544,15 @@ class Player extends Human implements CommandSender, ChunkListener, IPlayer{
 	}
 
 	/**
-	 * Returns the player's speed when flying.
+	 * Returns the player's flight speed multiplier.
+  	 *
+	 * Normal flying speed in blocks-per-tick is (multiplier * 10) blocks per tick.
+	 * When sprint-flying, this is doubled to 20.
 	 *
-	 * The flight speed is calculated as `blocks per tick = flightSpeedMultiplier * 10`. For example, if the
-	 * flight speed multiplier is set to 0.05, the player will fly at approximately 0.5 blocks per tick.
+	 * If set to zero, the player will not be able to move in the xz plane when flying.
+	 * Negative values will invert the controls.
 	 *
-	 * If zero, the player is not be able to move in the xz plane when flying, and negative values
-	 * will invert the controls.
+	 * @see Player::DEFAULT_FLIGHT_SPEED_MULTIPLIER
 	 */
 	public function getFlightSpeedMultiplier() : float{
 		return $this->flightSpeedMultiplier;
