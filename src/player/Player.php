@@ -545,7 +545,7 @@ class Player extends Human implements CommandSender, ChunkListener, IPlayer{
 
 	/**
 	 * Returns the player's flight speed multiplier.
-  	 *
+	 *
 	 * Normal flying speed in blocks-per-tick is (multiplier * 10) blocks per tick.
 	 * When sprint-flying, this is doubled to 20.
 	 *
